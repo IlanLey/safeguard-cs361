@@ -185,10 +185,6 @@ def generatePassword():
     clear()
 
     length = input("\nEnter Desired Password Length (Minimum 8): ")
-    try:
-        length = int(length)
-    except ValueError:
-        length = 10
 
     try:
         response = requests.get(f"http://localhost:5004/generate?length={length}")
