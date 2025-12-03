@@ -7,21 +7,21 @@ SIMILARITY_THRESHOLD = 0.7  # 70% similarity considered too similar
 
 def password_similarity(new_password, old_password):
     if not new_password or not old_password:
-        return {"error": "Both new and old passwords are required."}
+        return {"error": "Both New and Old Passwords are Required."}
 
     similarity = Levenshtein.ratio(new_password, old_password)
     too_similar = similarity >= SIMILARITY_THRESHOLD
 
-    feedback = "Password is Too Similar to Previous Password, choose a more unique one." if too_similar else "Password is Sufficiently Unique."
+    feedback = "Password is Too Similar to Previous Password, Choose a More Unique One." if too_similar else "Password is Sufficiently Unique."
     return {"Similarity": similarity, "Too Similar": too_similar, "Feedback": feedback}
 
 def username_password_similarity(username, password):
     if not username or not password:
-        return {"error": "Both username and password are required."}
+        return {"error": "Both Username and Password are Required."}
 
     similarity = Levenshtein.ratio(username, password)
     too_similar = similarity >= SIMILARITY_THRESHOLD
-    feedback = "Password is Too Similar to Username, choose a stronger password." if too_similar else "Password is Sufficiently Different from Username."
+    feedback = "Password is Too Similar to Username, Choose a Stronger Password." if too_similar else "Password is Sufficiently Different from Username."
     return {"Similarity": similarity, "Too Similar": too_similar, "Feedback": feedback}
 
 @app.route("/check_password_similarity", methods=["POST"])
