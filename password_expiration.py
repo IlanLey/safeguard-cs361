@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from datetime import datetime
 
 app = Flask(__name__)
+
+# Good Rotational Password Time Period
 PASSWORD_MAX_AGE_DAYS = 90
 
 @app.route("/check_password_age", methods=["POST"])
@@ -17,8 +19,10 @@ def check_password_age():
     except ValueError:
         return jsonify({"days_old": None, "status": "Error", "message": "Invalid Date Format, Expected YYYY-MM-DD"})
 
+    # Checks the Days Old
     days_old = (datetime.now() - last_changed_date).days
 
+    # Check 90 Day Threshold
     if days_old >= PASSWORD_MAX_AGE_DAYS:
         status, message = "Expired", "Your Password is Expired. You Should Update It."
     elif days_old >= PASSWORD_MAX_AGE_DAYS * 0.75:

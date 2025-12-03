@@ -3,8 +3,9 @@ import Levenshtein
 
 app = Flask(__name__)
 
-SIMILARITY_THRESHOLD = 0.7  # 70% similarity considered too similar
+SIMILARITY_THRESHOLD = 0.7  # 70% Similarity Threshold
 
+# New Password Vs. Old Password
 def password_similarity(new_password, old_password):
     if not new_password or not old_password:
         return {"error": "Both New and Old Passwords are Required."}
@@ -15,6 +16,7 @@ def password_similarity(new_password, old_password):
     feedback = "Password is Too Similar to Previous Password, Choose a More Unique One." if too_similar else "Password is Sufficiently Unique."
     return {"Similarity": similarity, "Too Similar": too_similar, "Feedback": feedback}
 
+# UserName Vs.Password
 def username_password_similarity(username, password):
     if not username or not password:
         return {"error": "Both Username and Password are Required."}
