@@ -28,4 +28,4 @@ def check_password_age():
     return jsonify({"days_old": days_old, "status": status, "message": message})
 
 if __name__ == "__main__":
-    app.run(port=5003, debug=True)
+    app.run(port=5003)

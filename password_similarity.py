@@ -41,4 +41,4 @@ def check_username_similarity():
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(port=5002, debug=True)
+    app.run(port=5002)
